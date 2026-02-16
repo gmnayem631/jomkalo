@@ -21,7 +21,7 @@ const displayFeaturedProducts = (products) => {
                 <img
                   src="${product.image}"
                   alt="${product.title}"
-                  class="h-64"
+                  class="h-40"
                 />
               </div>
               <div class="p-5">
