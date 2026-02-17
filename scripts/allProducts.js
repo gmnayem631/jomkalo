@@ -47,13 +47,10 @@ const displayAllProducts = (products) => {
                 <p class="text-xl font-bold text-gray-900 mb-4">$${product.price}</p>
               </div>
               <div class="flex gap-3">
-                <a href="#my_modal_8"
-                class="flex-1 flex items-center justify-center gap-2 border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors">
-                <i class="fas fa-eye text-gray-500"></i> Details
-                </a>
+                <button onclick="loadProductDetail(${product.id})" class="flex-1 flex items-center cursor-pointer justify-center gap-2 border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors" > <i class="fas fa-eye text-gray-500"></i> Details </button>
 
                 <button
-                  class="flex-1 flex items-center justify-center gap-2 bg-primary text-white py-2 rounded-lg hover:bg-purple-700 transition-colors"
+                  class="flex-1 flex items-center justify-center gap-2 bg-primary text-white py-2 rounded-lg hover:bg-purple-700 transition-colors cursor-pointer"
                 >
                   <i class="fas fa-shopping-cart"></i> Add
                 </button>
@@ -66,7 +63,38 @@ const displayAllProducts = (products) => {
   });
 };
 
-const loadCategoryProduct = (id) => {};
+const loadProductDetail = async (id) => {
+  const url = `https://fakestoreapi.com/products/${id}`;
+  console.log(url);
+  const response = await fetch(url);
+  const details = await response.json();
+  displayProductDetail(details);
+};
+
+const displayProductDetail = (product) => {
+  console.log(product);
+  const detailsBox = document.getElementById("details-container");
+  detailsBox.innerHTML = `
+              <h3 class="font-bold text-xl my-3">
+                ${product.title}
+              </h3>
+              <p class="text-sm text-justify mb-3">
+                ${product.description}
+              </p>
+              <div class="flex justify-between">
+                <p class="font-semibold">${product.price}</p>
+                <p><i class="fa-solid fa-star"></i>${product.rating.rate}</p>
+              </div>
+              <!-- Buttons -->
+              <div class="flex justify-between mt-3">
+                <button class="btn btn-primary">Buy Now</button
+                ><button class="btn btn-primary btn-outline">
+                  Add to Cart
+                </button>
+              </div>            
+  `;
+  document.getElementById("product_modal").showModal();
+};
 
 const displayCategories = (categories) => {
   const categoryContainer = document.getElementById("category-container");
