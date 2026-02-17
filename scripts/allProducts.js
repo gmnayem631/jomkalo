@@ -38,7 +38,7 @@ const displayAllProducts = (products) => {
                   >
                   <div class="flex items-center text-yellow-500">
                     <i class="fas fa-star"></i>
-                    <span class="ml-1 font-medium">${product.rating.rate}</span>
+                    <span class="ml-1 font-medium">$${product.rating.rate}</span>
                     <span class="text-gray-500 ml-1">(${product.rating.count})</span>
                   </div>
                 </div>
