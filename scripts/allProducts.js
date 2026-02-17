@@ -1,4 +1,5 @@
 const loadAllProducts = () => {
+  manageLoader(true);
   fetch("https://fakestoreapi.com/products")
     .then((response) => response.json())
     .then((data) => displayAllProducts(data));
@@ -61,6 +62,7 @@ const displayAllProducts = (products) => {
 
     allProductContainer.appendChild(card);
   });
+  manageLoader(false);
 };
 
 const loadProductDetail = async (id) => {
@@ -108,6 +110,18 @@ const displayCategories = (categories) => {
 
     categoryContainer.appendChild(btnDiv);
   });
+};
+
+const manageLoader = (status) => {
+  if (status === true) {
+    document.getElementById("loader").classList.remove("hidden");
+    document.getElementById("all-products-container").classList.add("hidden");
+  } else {
+    document
+      .getElementById("all-products-container")
+      .classList.remove("hidden");
+    document.getElementById("loader").classList.add("hidden");
+  }
 };
 
 loadAllProducts();
