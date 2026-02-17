@@ -47,11 +47,11 @@ const displayAllProducts = (products) => {
                 <p class="text-xl font-bold text-gray-900 mb-4">$${product.price}</p>
               </div>
               <div class="flex gap-3">
-                <button
-                  class="flex-1 flex items-center justify-center gap-2 border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors"
-                >
-                  <i class="fas fa-eye text-gray-500"></i> Details
-                </button>
+                <a href="#my_modal_8"
+                class="flex-1 flex items-center justify-center gap-2 border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors">
+                <i class="fas fa-eye text-gray-500"></i> Details
+                </a>
+
                 <button
                   class="flex-1 flex items-center justify-center gap-2 bg-primary text-white py-2 rounded-lg hover:bg-purple-700 transition-colors"
                 >
@@ -66,6 +66,8 @@ const displayAllProducts = (products) => {
   });
 };
 
+const loadCategoryProduct = (id) => {};
+
 const displayCategories = (categories) => {
   const categoryContainer = document.getElementById("category-container");
   categoryContainer.innerHTML = "";
@@ -73,7 +75,7 @@ const displayCategories = (categories) => {
   categories.forEach((category) => {
     const btnDiv = document.createElement("button");
     btnDiv.innerHTML = `
-    <button class="btn btn-primary btn-outline"> ${category.toUpperCase()} </button>
+    <button onclick="loadCategoryProduct()" class="btn btn-primary btn-outline"> ${category.toUpperCase()} </button>
     `;
 
     categoryContainer.appendChild(btnDiv);
